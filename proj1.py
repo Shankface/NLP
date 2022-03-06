@@ -14,26 +14,28 @@ avg = []
 avgm = []
 alp = defaultdict(int)
 
-print("trial: " + str(i))
+
 subjects = defaultdict(lambda : defaultdict(int)) # Holds each subject and its words and word probabilities
 subjectData = defaultdict(lambda : defaultdict(int)) # Holds prob and count of each subject
 totalFiles = 0
 
-print("Input Training Document:")
-train = input()
-print("Input Test Document:")
-test = input()
-#train = "./TC_provided/corpus2_train.labels"
-#test = "./TC_provided/corpus1_test.labels"
+#print("Input Training Document:")
+#train = input()
+#print("Input Test Document:")
+#test = input()
+train = "./TC_provided/corpus3_train.labels"
+test = "./TC_provided/corpus1_test.labels"
 
 stop_words = stopwords.words("english")
 
+r = sample(range(955), 955)
 # ---------------- Training ----------------
 with open(train) as f1:
     links = f1.readlines()
 
-    for link in links:
-    
+    #for link in links:
+    for x in range(860):
+        link = links[r[x]]
         subject = link.split()[1]
         subjectData[subject]['count'] += 1
         totalFiles += 1
@@ -65,7 +67,12 @@ for sub in subjectData:
 guesses = defaultdict(int)
 K = len(subjectData)
 
-a = .0155
+if(K == 5):
+    a = .095
+if(K == 2):
+    a = .0155
+if(K == 6):
+    a = .065
 
 for n in range(1):
     #a += .0005
@@ -73,7 +80,7 @@ for n in range(1):
     with open(train) as f1:
         links = f1.readlines()
         #for link in links:
-        for x in range(750, 894):
+        for x in range(860, 955):
             link = links[r[x]]
             possible_sub = defaultdict(lambda: 0)
             s = dirname(train) + link.split()[0][1:]
@@ -84,7 +91,7 @@ for n in range(1):
                     possible_sub[sub] = math.log(subjectData[sub]['prob'])
                     N = subjectData[sub]['count']
                     for word in words:
-                        if((word.isalpha())and (word not in stop_words)):
+                        if((word.isalpha()) and (word not in stop_words)):
                             c = 0
                             if(word in subjects[sub]):
                                 c = subjects[sub][word]
@@ -94,6 +101,9 @@ for n in range(1):
                     correct += 1
             f2.close()
     f1.close()
+
+print(a)
+print(correct/len(guesses))
 
 print("Input Output Document:")
 out = input()

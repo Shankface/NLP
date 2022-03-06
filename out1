@@ -35,7 +35,7 @@
 ./corpus1/test/32432.article Str
 ./corpus1/test/28379.article Pol
 ./corpus1/test/44030.article Str
-./corpus1/test/28242.article Oth
+./corpus1/test/28242.article Str
 ./corpus1/test/27007.article Dis
 ./corpus1/test/16980.article Pol
 ./corpus1/test/32068.article Pol
@@ -51,7 +51,7 @@
 ./corpus1/test/26291.article Str
 ./corpus1/test/26769.article Pol
 ./corpus1/test/44183.article Str
-./corpus1/test/15004.article Oth
+./corpus1/test/15004.article Pol
 ./corpus1/test/17352.article Str
 ./corpus1/test/16279.article Pol
 ./corpus1/test/33430.article Pol
@@ -64,7 +64,7 @@
 ./corpus1/test/26277.article Cri
 ./corpus1/test/31627.article Str
 ./corpus1/test/33123.article Oth
-./corpus1/test/46243.article Cri
+./corpus1/test/46243.article Str
 ./corpus1/test/24273.article Str
 ./corpus1/test/13901.article Cri
 ./corpus1/test/27443.article Str
@@ -172,13 +172,13 @@
 ./corpus1/test/25680.article Pol
 ./corpus1/test/28639.article Pol
 ./corpus1/test/25276.article Pol
-./corpus1/test/27141.article Oth
+./corpus1/test/27141.article Str
 ./corpus1/test/32121.article Dis
 ./corpus1/test/24734.article Pol
 ./corpus1/test/28993.article Str
 ./corpus1/test/25355.article Pol
 ./corpus1/test/09972.article Dis
-./corpus1/test/26670.article Oth
+./corpus1/test/26670.article Dis
 ./corpus1/test/30420.article Dis
 ./corpus1/test/16705.article Pol
 ./corpus1/test/25169.article Str
@@ -194,7 +194,7 @@
 ./corpus1/test/15216.article Str
 ./corpus1/test/29300.article Pol
 ./corpus1/test/16740.article Str
-./corpus1/test/24716.article Cri
+./corpus1/test/24716.article Pol
 ./corpus1/test/16042.article Dis
 ./corpus1/test/32354.article Pol
 ./corpus1/test/16571.article Pol
@@ -211,7 +211,7 @@
 ./corpus1/test/27100.article Dis
 ./corpus1/test/28151.article Str
 ./corpus1/test/16815.article Pol
-./corpus1/test/17634.article Oth
+./corpus1/test/17634.article Dis
 ./corpus1/test/13984.article Dis
 ./corpus1/test/14982.article Str
 ./corpus1/test/14467.article Str
@@ -272,7 +272,7 @@
 ./corpus1/test/09398.article Dis
 ./corpus1/test/14511.article Str
 ./corpus1/test/04116.article Pol
-./corpus1/test/25502.article Pol
+./corpus1/test/25502.article Str
 ./corpus1/test/16098.article Dis
 ./corpus1/test/15379.article Dis
 ./corpus1/test/23549.article Pol
@@ -290,7 +290,7 @@
 ./corpus1/test/45219.article Str
 ./corpus1/test/14094.article Dis
 ./corpus1/test/27370.article Pol
-./corpus1/test/29457.article Pol
+./corpus1/test/29457.article Str
 ./corpus1/test/31643.article Dis
 ./corpus1/test/26334.article Pol
 ./corpus1/test/23208.article Pol
@@ -308,7 +308,7 @@
 ./corpus1/test/22575.article Str
 ./corpus1/test/25483.article Cri
 ./corpus1/test/34168.article Str
-./corpus1/test/28612.article Oth
+./corpus1/test/28612.article Str
 ./corpus1/test/44122.article Str
 ./corpus1/test/31945.article Str
 ./corpus1/test/14757.article Dis
@@ -350,7 +350,7 @@
 ./corpus1/test/33176.article Dis
 ./corpus1/test/28209.article Str
 ./corpus1/test/33190.article Str
-./corpus1/test/27434.article Cri
+./corpus1/test/27434.article Str
 ./corpus1/test/24860.article Cri
 ./corpus1/test/05471.article Dis
 ./corpus1/test/31231.article Dis
@@ -369,7 +369,7 @@
 ./corpus1/test/32371.article Pol
 ./corpus1/test/16157.article Str
 ./corpus1/test/06694.article Dis
-./corpus1/test/14758.article Dis
+./corpus1/test/14758.article Str
 ./corpus1/test/34120.article Pol
 ./corpus1/test/05423.article Dis
 ./corpus1/test/32207.article Dis
@@ -392,7 +392,7 @@
 ./corpus1/test/14823.article Pol
 ./corpus1/test/22060.article Cri
 ./corpus1/test/15566.article Str
-./corpus1/test/16062.article Pol
+./corpus1/test/16062.article Str
 ./corpus1/test/13903.article Cri
 ./corpus1/test/46432.article Str
 ./corpus1/test/16817.article Cri
@@ -401,7 +401,7 @@
 ./corpus1/test/25519.article Oth
 ./corpus1/test/15177.article Str
 ./corpus1/test/05418.article Dis
-./corpus1/test/28781.article Oth
+./corpus1/test/28781.article Pol
 ./corpus1/test/29889.article Pol
 ./corpus1/test/06772.article Dis
 ./corpus1/test/15221.article Str
@@ -430,7 +430,7 @@
 ./corpus1/test/22717.article Str
 ./corpus1/test/15851.article Str
 ./corpus1/test/22838.article Dis
-./corpus1/test/28610.article Cri
+./corpus1/test/28610.article Str
 ./corpus1/test/26185.article Pol
 ./corpus1/test/10646.article Dis
 ./corpus1/test/47178.article Str
