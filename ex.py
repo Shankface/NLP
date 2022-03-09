@@ -47,6 +47,9 @@ for sub in subjectData:
     subjectData[sub]['prob'] = (subjectData[sub]['count'])/totalFiles
 
 
+
+# ---------------- Testing ----------------
+
 guesses = defaultdict(int)
 K = len(subjectData)
 
