@@ -1,3 +1,7 @@
+# AYDEN SHANKMAN
+# ECE467
+# PROJECT 1 - TEXT CATEGORIZOR USING NAIVE BAYES
+
 from nltk import download
 from nltk.tokenize import sent_tokenize, word_tokenize
 download("punkt")
@@ -53,9 +57,9 @@ K = len(subjectData)
 #smoothing factor
 if(K == 5): # Corpus1
     a = .095
-if(K == 2): # Corpus1
+if(K == 2): # Corpus2
     a = .0155
-if(K == 6): # Corpus1
+if(K == 6): # Corpus3
     a = .06
 
 with open(test) as f1:
