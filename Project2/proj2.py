@@ -82,7 +82,7 @@ def parse (x,y,z,tree, level = 1):
 
     p = '[' + term + " " + parse(x1,y1,z1,tree)[0] + " " + parse(x2,y2,z2,tree)[0] +  "]"
     
-    if(tree == 'y'):
+    if(tree.lower() == 'y'):
         pt = '[' + term + "\n" + '   '*level + parse(x1,y1,z1,tree,level+1)[1] + "\n" + '   '*level + parse(x2,y2,z2,tree,level+1)[1] + "\n" + '   '*(level-1)  + ']'
 
     return[p,pt]
@@ -106,6 +106,7 @@ while(s != 'quit'):
         if(table[0][numWords-1][i][0] == 'S'):
             if(not valid):
                 print('VALID SENTENCE\n')
+                valid = True
             x+=1
             print("Valid parse #" + str(x))
             t = parse(0,numWords-1,i,tree)
@@ -114,9 +115,3 @@ while(s != 'quit'):
         print('NOT A VALID SENTENCE\n')
     else:
         print('Number of valid parses:',x,'\n')
-
-
-
-
-
-        
