@@ -44,6 +44,7 @@ _Dummy3 --> Aux NP
 Proper-Noun --> houston
 Proper-Noun --> nwa
 Verb --> book
+Verb --> 2
 Verb --> include
 Verb --> prefer
 Verb --> fly

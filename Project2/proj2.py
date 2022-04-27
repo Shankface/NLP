@@ -77,7 +77,7 @@ def parse (x,y,z,tree, level = 1):
     y2 = table[x][y][z][2][1]
     z2 = table[x][y][z][2][3]
     
-    if(term1.islower()):
+    if(term1.islower() or term1.isnumeric()):
         return [("[" + term + " " + term1 + ']'),("[" + term + " " + term1 + ']')]
 
     p = '[' + term + " " + parse(x1,y1,z1,tree)[0] + " " + parse(x2,y2,z2,tree)[0] +  "]"
