@@ -30,6 +30,8 @@ header = next(csvreader)
 for row in csvreader:
     if(row[1] == '0'):
         texts.append(row[0])
+    if(len(texts)==5000):
+        break
 f.close()
 
 tokenizer = Tokenizer(oov_token = 'oov')
@@ -64,16 +66,16 @@ model = keras.Sequential()
 # Add an Embedding layer expecting input vocab of size word_counts, and
 # output embedding dimension of size 64.
 model.add(Embedding(input_dim = n_words, 
-                    output_dim = 16,
+                    output_dim = 240,
                     input_length = 30-1))
 
 # Add a LSTM layer with 128 internal units.
-model.add(LSTM(4))
+model.add(LSTM(8))
 
 # Add a Dense layer with 10 units.
 model.add(Dense(n_words, activation = 'softmax'))
 
-adam = Adam(learning_rate = 0.1)
+adam = Adam(learning_rate = 0.01)
 
 model.compile(loss = 'categorical_crossentropy',
                 optimizer = adam,
@@ -81,5 +83,6 @@ model.compile(loss = 'categorical_crossentropy',
 
 model.summary()
 
-model.fit(inputs, y, epochs = 1, verbose = 1)
+model.fit(inputs, y, epochs = 50, verbose = 1)
 
+  

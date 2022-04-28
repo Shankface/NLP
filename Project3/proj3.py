@@ -96,3 +96,8 @@ model.add(layers.Dense(5, activation = 'relu'))
 
 model.summary()
 
+nums = [0,2,4,5,7,9,11]
+key_scale = []
+for n in nums:
+    key_scale.append(flat_notes[n + flat_notes.index(user_key)])
+
