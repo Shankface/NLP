@@ -35,7 +35,7 @@ f.close()
 tokenizer = Tokenizer(oov_token = 'oov')
 tokenizer.fit_on_texts(texts)
 word_index = tokenizer.word_index
-n_words = len(word_index) + 1
+n_words = len(word_index) + 1  # 23000 words indexed
 input_seq = []
 
 tok_lists = tokenizer.texts_to_sequences(texts)
@@ -73,7 +73,7 @@ model.add(LSTM(4))
 # Add a Dense layer with 10 units.
 model.add(Dense(n_words, activation = 'softmax'))
 
-adam = Adam(learning_rate = 0.001)
+adam = Adam(learning_rate = 0.1)
 
 model.compile(loss = 'categorical_crossentropy',
                 optimizer = adam,
@@ -81,5 +81,5 @@ model.compile(loss = 'categorical_crossentropy',
 
 model.summary()
 
-#model.fit(inputs, y, epochs = 20, verbose = 1)
+model.fit(inputs, y, epochs = 1, verbose = 1)
 
