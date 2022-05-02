@@ -21,13 +21,15 @@ def rev(num):
     for i in tok_lists[num]:
         print(list(word_index.keys())[list(word_index.values()).index(i)])
 
-def top_3(p,num):
+def top(p,num):
     probs = p[0].tolist()
     top = []
     for _ in range(num):
         ind = np.argmax(probs)
+        print(max(probs))
         top.append(ind)
         probs.pop(ind)
+    print('')
     return random.choice(top)
 
 texts = []
@@ -38,7 +40,7 @@ header = next(csvreader)
 for row in csvreader:
     if(row[1] == '0'):
         texts.append(row[0]+".")
-    if(len(texts) == 5000):
+    if(len(texts) == 8000):
       break
 f.close()
 #print(texts)
@@ -90,7 +92,7 @@ y = np_utils.to_categorical(labels, num_classes = n_words)
 #
 #model.save('model2.h5')
 
-model = keras.models.load_model('model.h5')
+model = keras.models.load_model('model2.h5')
 #model.fit(inputs, y, batch_size = 256, epochs = 50)
 seed = ''
 while(True):
@@ -103,9 +105,12 @@ while(True):
         token_list = tokenizer.texts_to_sequences([seed])
         token_list = pad_sequences(token_list, maxlen = max_seq_len-1, padding='pre')
         probs = model.predict(token_list)
-
+        print(probs[0])
+        print("sd: " + str(np.std(probs[0])))
         #ind = top_3(probs,2)
-        
+        top(probs,5)
+        #print("max prob: " + str(max(probs[0])))
+        #print("min prob: " + str(min(probs[0])))
         ind = np.argmax(probs)
         word = list(word_index.keys())[list(word_index.values()).index(ind)]
         seed += " " + word
