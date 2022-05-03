@@ -16,24 +16,23 @@ from keras.preprocessing.sequence import pad_sequences
 
 import pandas as pd
 
-
+## Function to print sentence based on word indices
 def rev(num):
     for i in tok_lists[num]:
         print(list(word_index.keys())[list(word_index.values()).index(i)])
 
+## Function to print top 3 probable next words based on input sentence
 def top(p,num):
     probs = p[0].tolist()
     top = []
     for _ in range(num):
         ind = np.argmax(probs)
-        print(max(probs))
         top.append(ind)
         probs.pop(ind)
-    print('')
     return random.choice(top)
 
+## Get first 8000 Onion News Titles
 texts = []
-
 f = open("./OnionOrNot.csv")
 csvreader = csv.reader(f)
 header = next(csvreader)
@@ -41,32 +40,32 @@ for row in csvreader:
     if(row[1] == '0'):
         texts.append(row[0]+".")
     if(len(texts) == 8000):
-      break
+      break;
 f.close()
-#print(texts)
 
+## Tokenize words
 tokenizer = Tokenizer(oov_token = 'oov', filters = '*', split = ' ')
 tokenizer.fit_on_texts(texts)
 word_index = tokenizer.word_index
 n_words = len(word_index) + 1
-print("# words: " + str(n_words))
+#print("# words: " + str(n_words))
+#print(word_index)
 
 
+## Tokenize all titles and split them based on preceding words
 input_seq = []
 tok_lists = tokenizer.texts_to_sequences(texts)
 for tok_list in tok_lists:
-    #print(tok_list)
     for i in range(1,len(tok_list)):
         n_gram_seq = tok_list[:i+1]
-        #print(n_gram_seq)
         input_seq.append(n_gram_seq)
         #if(i == 30):
         #    break
 
-#print(sum([len(x) for x in tok_lists])/len(tok_lists))
 max_seq_len = max([len(x) for x in input_seq])
-input_seq = pad_sequences(input_seq, maxlen = max_seq_len, padding = 'pre')
+input_seq = pad_sequences(input_seq, maxlen = max_seq_len, padding = 'pre') # make sure all input sentences are same length with padding 
 
+## Split data in
 inputs = input_seq[:,:-1]
 labels = input_seq[:,-1]
 y = np_utils.to_categorical(labels, num_classes = n_words)
@@ -91,9 +90,12 @@ y = np_utils.to_categorical(labels, num_classes = n_words)
 #model.fit(inputs, y, epochs = 50)
 #
 #model.save('model2.h5')
-
 model = keras.models.load_model('model2.h5')
-#model.fit(inputs, y, batch_size = 256, epochs = 50)
+model.summary()
+model.fit(inputs, y, batch_size = 256, epochs = 50)
+
+model.save('model3.h5')
+
 seed = ''
 while(True):
 
@@ -105,13 +107,12 @@ while(True):
         token_list = tokenizer.texts_to_sequences([seed])
         token_list = pad_sequences(token_list, maxlen = max_seq_len-1, padding='pre')
         probs = model.predict(token_list)
-        print(probs[0])
-        print("sd: " + str(np.std(probs[0])))
-        #ind = top_3(probs,2)
-        top(probs,5)
-        #print("max prob: " + str(max(probs[0])))
-        #print("min prob: " + str(min(probs[0])))
-        ind = np.argmax(probs)
+
+        probs = probs[0][1:]
+
+        ind = random.choices(list(word_index.values()), weights = probs, k = 1000)
+        ind = random.choice(ind)
+
         word = list(word_index.keys())[list(word_index.values()).index(ind)]
         seed += " " + word
         if(word[-1] == '.'):
